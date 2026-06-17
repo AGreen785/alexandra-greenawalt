@@ -130,6 +130,232 @@
   @media (max-width:900px){ .grid{columns:2} }
   @media (max-width:560px){ .grid{columns:2} .hero{padding:2.4rem 1.2rem} }
   @media (prefers-reduced-motion:reduce){ .card{transition:none} html{scroll-behavior:auto} }
+
+  /* ─────────── METHOD & IMPACT SECTION ─────────── */
+  :root{ --yellow:#EEF504; --yellow-deep:#d4da00; }
+  .method{
+    background:linear-gradient(180deg,#ffffff 0%, #f7fdfe 100%);
+    border-bottom:1px solid #e7f1f3;
+    padding:2.8rem 1.5rem 2.4rem;
+  }
+  .method-inner{max-width:1000px;margin:0 auto}
+  .method-head{text-align:center;margin-bottom:1.9rem}
+  .method-eyebrow{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:var(--yellow);color:#1a3940;
+    font-family:var(--font-body);font-weight:700;
+    font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+    padding:.38rem .85rem;border-radius:999px;margin-bottom:.95rem;
+    box-shadow:0 2px 8px rgba(212,218,0,.35);
+  }
+  .method-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#1a3940}
+  .method-head h2{
+    font-family:var(--font-display);font-weight:800;
+    font-size:clamp(1.5rem,3.4vw,2.15rem);color:#0f5763;
+    line-height:1.12;letter-spacing:-.01em;
+  }
+  .method-head h2 .hl{
+    background:linear-gradient(180deg,transparent 58%, var(--yellow) 58%);
+    padding:0 .1em;
+  }
+  .method-head p{
+    font-family:var(--font-body);font-size:.96rem;color:#48717a;
+    max-width:640px;margin:.85rem auto 0;line-height:1.55;
+  }
+
+  /* the CIVIC key — colorful gradient cards */
+  .civic-key{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:.7rem;
+    margin:1.6rem auto 0;max-width:1000px;
+  }
+  .civic-card{
+    position:relative;overflow:hidden;
+    border-radius:14px;
+    padding:1.05rem 1rem 1.1rem;
+    color:#fff;
+    box-shadow:0 4px 14px rgba(15,87,99,.12);
+    min-height:158px;
+  }
+  .civic-card::after{
+    content:"";position:absolute;right:-26px;bottom:-26px;
+    width:96px;height:96px;border-radius:50%;
+    background:rgba(255,255,255,.13);
+  }
+  .civic-card .cc-letter{
+    font-family:var(--font-display);font-weight:800;
+    font-size:1.9rem;line-height:1;margin-bottom:.55rem;
+    position:relative;z-index:1;
+  }
+  .civic-card .cc-title{
+    font-family:var(--font-display);font-weight:700;
+    font-size:.96rem;line-height:1.2;margin-bottom:.4rem;
+    position:relative;z-index:1;
+  }
+  .civic-card .cc-desc{
+    font-family:var(--font-body);font-weight:400;
+    font-size:.78rem;line-height:1.4;opacity:.96;
+    position:relative;z-index:1;
+  }
+  /* the five chapter colors */
+  .cc-1{background:linear-gradient(150deg,#1597ac 0%,#127f92 100%)}
+  .cc-2{background:linear-gradient(150deg,#2bb2c4 0%,#22a0b2 100%)}
+  .cc-3{background:linear-gradient(150deg,#2cba93 0%,#23a883 100%)}
+  .cc-4{background:linear-gradient(150deg,#73b24e 0%,#63a23f 100%)}
+  .cc-5{background:linear-gradient(150deg,#e6ac32 0%,#d99f24 100%)}
+
+  @media (max-width:880px){
+    .civic-key{grid-template-columns:repeat(2,1fr);max-width:560px}
+    .civic-card{min-height:0}
+  }
+  @media (max-width:460px){
+    .civic-key{grid-template-columns:1fr;max-width:360px}
+  }
+
+  /* project cards */
+  .proj-grid{
+    display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1.9rem;
+  }
+  .proj{
+    background:#fff;border:1.5px solid #e3eef0;border-radius:16px;
+    overflow:hidden;transition:box-shadow .2s ease, border-color .2s ease;
+  }
+  .proj.open{box-shadow:0 10px 34px rgba(10,46,53,.13);border-color:var(--yellow)}
+  .proj-top{
+    display:flex;align-items:center;gap:1rem;
+    padding:1.15rem 1.3rem;cursor:pointer;position:relative;
+  }
+  .proj-num{
+    flex:none;width:42px;height:42px;border-radius:11px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-weight:800;font-size:1.05rem;
+    background:var(--yellow);color:#1a3940;
+  }
+  .proj-txt{flex:1;min-width:0}
+  .proj-txt h3{
+    font-family:var(--font-display);font-weight:700;
+    font-size:clamp(1.02rem,2vw,1.22rem);color:#0f5763;line-height:1.2;
+  }
+  .proj-txt .hook{
+    font-family:var(--font-body);font-size:.88rem;color:#5e848c;
+    margin-top:.2rem;line-height:1.4;
+  }
+  .proj-toggle{
+    flex:none;display:inline-flex;align-items:center;gap:.4rem;
+    font-family:var(--font-body);font-weight:600;font-size:.78rem;
+    color:#0e7c8c;white-space:nowrap;
+  }
+  .proj-toggle .chev{
+    width:18px;height:18px;transition:transform .25s ease;
+    display:inline-block;
+  }
+  .proj.open .proj-toggle .chev{transform:rotate(180deg)}
+  .proj-toggle .lbl-open{display:none}
+  .proj.open .proj-toggle .lbl-closed{display:none}
+  .proj.open .proj-toggle .lbl-open{display:inline}
+
+  /* expandable body */
+  .proj-body{
+    max-height:0;overflow:hidden;
+    transition:max-height .4s ease;
+  }
+  .proj-body-inner{
+    padding:0 1.3rem 1.3rem;
+    border-top:1px solid #eef5f6;margin-top:0;
+  }
+  .proj-body-inner .intro{
+    font-family:var(--font-display);font-weight:600;
+    font-size:1.02rem;color:#123e46;line-height:1.5;
+    margin:1.1rem 0 .8rem;
+  }
+  .proj-body-inner p{
+    font-family:var(--font-body);font-size:.92rem;color:#3a5b62;
+    line-height:1.62;margin-bottom:.7rem;
+  }
+  .proj-body-inner p .lead{
+    color:#0a4a55;font-weight:600;
+  }
+  .proj-body-inner .outcomes{
+    background:#f6fcfd;border-left:3px solid var(--yellow);
+    border-radius:0 10px 10px 0;padding:.8rem 1rem;margin:.9rem 0;
+  }
+  .proj-body-inner .outcomes b{color:#0f5763;font-family:var(--font-display)}
+  .proj-body-inner .outcomes ul{margin:.4rem 0 0;padding-left:1.1rem}
+  .proj-body-inner .outcomes li{
+    font-family:var(--font-body);font-size:.88rem;color:#3a5b62;
+    line-height:1.5;margin-bottom:.25rem;
+  }
+  .proj-body-inner .outcomes li.quote{
+    list-style:none;margin:.55rem 0 .55rem -1.1rem;
+    padding:.55rem .8rem;background:#fff;border-radius:8px;
+    border-left:3px solid var(--yellow-deep);
+    font-style:italic;color:#2d545c;
+  }
+  .proj-body-inner .outcomes li.quote .attr{
+    display:block;font-style:normal;font-weight:600;
+    font-size:.78rem;color:#7ba0a8;margin-top:.3rem;
+  }
+  .proj-body-inner .outcomes li.watch{
+    list-style:none;margin:.45rem 0 .25rem -1.1rem;
+  }
+  .proj-body-inner .outcomes li.flywheel{
+    list-style:none;margin:.2rem 0 .6rem -1.1rem;
+    padding:.65rem .85rem;border-radius:8px;
+    background:#fff;border-left:3px solid var(--yellow-deep);
+    color:#123e46;line-height:1.55;
+  }
+  .proj-body-inner .outcomes li.flywheel b{
+    display:block;font-family:var(--font-display);
+    color:#0f5763;font-size:.82rem;letter-spacing:.04em;
+    text-transform:uppercase;margin-bottom:.25rem;
+  }
+  .proj-body-inner .outcomes a.watch-link{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:var(--font-body);font-weight:600;font-size:.86rem;
+    color:#0e7c8c;text-decoration:none;
+    background:#eafafc;border:1px solid #c9e9ee;
+    padding:.45rem .75rem;border-radius:8px;
+    transition:background .15s ease,border-color .15s ease;
+  }
+  .proj-body-inner .outcomes a.watch-link:hover{
+    background:#dbf4f7;border-color:#9fd9e0;
+  }
+  .proj-body-inner .outcomes a.watch-link .ico{
+    flex:none;width:20px;height:20px;border-radius:50%;
+    background:var(--yellow);color:#1a3940;
+    display:inline-flex;align-items:center;justify-content:center;
+  }
+  .proj-body-inner .outcomes a.watch-link .ico svg{width:10px;height:10px;display:block}
+  /* which CIVIC elements this project activated */
+  .civic-tags{margin-top:1rem}
+  .civic-tags .ct-label{
+    font-family:var(--font-body);font-weight:600;font-size:.7rem;
+    letter-spacing:.14em;text-transform:uppercase;color:#7ba0a8;
+    margin-bottom:.5rem;
+  }
+  .civic-tags .ct-row{display:flex;flex-wrap:wrap;gap:.4rem}
+  .ct{
+    display:inline-flex;align-items:center;gap:.4rem;
+    font-family:var(--font-body);font-weight:600;font-size:.76rem;
+    color:#0e4651;background:#f3fbfc;border:1px solid #d7e9ec;
+    padding:.3rem .65rem;border-radius:8px;
+  }
+  .ct b{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:17px;height:17px;border-radius:4px;
+    background:var(--teal);color:#fff;font-family:var(--font-display);
+    font-weight:800;font-size:.66rem;
+  }
+
+  @media (min-width:760px){
+    .proj-grid{gap:1.1rem}
+  }
+  @media print{
+    .method{padding:1.5rem}
+    .proj-body{max-height:none !important}
+    .proj-toggle{display:none}
+  }
 </style>
 </head>
 <body>
@@ -143,6 +369,183 @@
     <div class="tagline">Community Impact</div>
   </div>
 </header>
+
+<section class="method">
+  <div class="method-inner">
+    <div class="method-head">
+      <span class="method-eyebrow"><span class="dot"></span>The CIVIC Method</span>
+      <h2>How I turn fragmented effort into <span class="hl">coordinated impact</span>.</h2>
+      <p>Lasting change happens when people, infrastructure, funding, policy, and community voice align around a shared purpose. CIVIC is the framework I use to build that alignment — below are three times I put it to work.</p>
+      <div class="civic-key">
+        <div class="civic-card cc-1">
+          <div class="cc-letter">C</div>
+          <div class="cc-title">Collective Responsibility</div>
+          <div class="cc-desc">Shared outcomes, roles, trust, and accountability.</div>
+        </div>
+        <div class="civic-card cc-2">
+          <div class="cc-letter">I</div>
+          <div class="cc-title">Infrastructure for Impact</div>
+          <div class="cc-desc">Funding, workforce, technology, policy, and collaboration.</div>
+        </div>
+        <div class="civic-card cc-3">
+          <div class="cc-letter">V</div>
+          <div class="cc-title">Voice &amp; Values</div>
+          <div class="cc-desc">Community wisdom, storytelling, feedback, and trust.</div>
+        </div>
+        <div class="civic-card cc-4">
+          <div class="cc-letter">I</div>
+          <div class="cc-title">Integrated Pathways</div>
+          <div class="cc-desc">Clear handoffs across the full continuum of need.</div>
+        </div>
+        <div class="civic-card cc-5">
+          <div class="cc-letter">C</div>
+          <div class="cc-title">Capacity for Change</div>
+          <div class="cc-desc">Leadership, metrics, sustainability, and execution.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-grid">
+
+      <!-- PROJECT 1 -->
+      <div class="proj" id="proj1">
+        <div class="proj-top" onclick="toggleProj('proj1')">
+          <div class="proj-num">01</div>
+          <div class="proj-txt">
+            <h3>Pathways Community Center</h3>
+            <div class="hook">Turning a building into a living ecosystem of coordinated care.</div>
+          </div>
+          <span class="proj-toggle">
+            <span class="lbl-closed">Read more</span><span class="lbl-open">Close</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="#0e7c8c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="intro">Most people would have looked at Pathways Community Center and seen a building. I saw something different — the possibility of a place where a person in crisis would not have to become their own case manager, navigator, advocate, transportation planner, and emotional support system just to survive.</div>
+            <p>Pathways could have been a perfectly respectable nonprofit hub: twenty-plus organizations sharing square footage, offering services, making referrals. But <span class="lead">good work sitting beside other good work is not the same as a system.</span> A person experiencing homelessness does not live their life in program categories. Their needs do not arrive neatly separated into housing, food, recovery, employment, childcare, transportation, legal support, and healthcare — they arrive all at once, tangled together. If the system is fragmented, the person has to carry that fragmentation in their own body, their own calendar, their own crisis.</p>
+            <p>That was the design challenge. The dream was not a place where organizations simply occupied the same address — it was a place where <span class="lead">the doors were already connected before a person ever walked through them.</span> So I started with the architecture beneath the architecture, bringing partners together around a question bigger than any one agency's grant report: <em>what does success look like for the whole person, and what does success look like for the whole community?</em></p>
+            <p>That question changed the room. Housing providers had to see how recovery affected stability. Workforce partners had to see how childcare shaped employment. Every partner began seeing that their outcome was connected to someone else's work. From that process came the Self-Sufficiency Outcomes Framework — a shared way to measure progress across the full picture of a person's life, not just the slice one organization happened to serve.</p>
+            <p>But a framework without infrastructure is just a good meeting. So we built the connective tissue: basic referral protocols and warm handoffs, then tracking tools, then a digital referral coordination system built with Winthrop University's computer science program, and eventually a migration to Unite Us — standardized intake, response-time agreements, and shared visibility into what was already happening for a client across the network.</p>
+            <p>That was the turning point. The building was no longer just a building; it was becoming a living system. A person could enter through one door, but the network could respond through many. A case manager could see who else was involved. A referral had a path. A client's story did not have to be retold from scratch every time they crossed another threshold. And the deeper success was cultural — partners who once saw themselves as co-tenants began acting like co-owners of a shared mission. Clients became volunteers. <span class="lead">A building houses programs; a world creates belonging.</span></p>
+            <p>That is what I was trying to build: not a directory of services, but a civic ecosystem where the physical space, the relationships, the technology, the funding, the partners, the outcomes, and the human experience all worked together. <span class="lead">Pathways was the method made visible</span> — a world designed so people could find their way back to stability, dignity, and belonging.</p>
+            <div class="outcomes">
+              <b>What it produced</b>
+              <ul>
+                <li><b>580+</b> individuals and families served annually, with <b>1,010+</b> referrals coordinated across <b>20</b> co-located service partners</li>
+                <li><b>$344K</b> in federal funding unlocked to expand housing stabilization capacity — <b>140+</b> individuals housed</li>
+                <li>Contributed to a <b>10%</b> reduction in homelessness through Catawba CoC board service</li>
+                <li>Grew annual contributions <b>+59%</b> and net assets <b>+88%</b>, securing <b>$3.6M+</b> in total revenue across three consecutive years of zero-deficit operations</li>
+                <li class="watch"><a class="watch-link" href="https://youtu.be/g5NLVrBQIP8?si=bLQbbmkkVKX-4ktr" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>See the Pathways model in motion</a></li>
+              </ul>
+            </div>
+            <div class="civic-tags">
+              <div class="ct-label">CIVIC elements activated</div>
+              <div class="ct-row">
+                <span class="ct"><b>C</b>Collective Responsibility</span>
+                <span class="ct"><b>I</b>Infrastructure for Impact</span>
+                <span class="ct"><b>V</b>Voice &amp; Values</span>
+                <span class="ct"><b>I</b>Integrated Pathways</span>
+                <span class="ct"><b>C</b>Capacity for Change</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="proj" id="proj2">
+        <div class="proj-top" onclick="toggleProj('proj2')">
+          <div class="proj-num">02</div>
+          <div class="proj-txt">
+            <h3>Humanizing Homelessness</h3>
+            <div class="hook">Designing experiential marketing with purpose.</div>
+          </div>
+          <span class="proj-toggle">
+            <span class="lbl-closed">Read more</span><span class="lbl-open">Close</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="#0e7c8c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="intro">Humanizing Homelessness began with a simple frustration: the community was looking at homelessness, but not really seeing it. People saw tents, street corners, shelter counts, statistics — a problem. But at Pathways, we knew the names.</div>
+            <p>We knew the grandmother who had lived behind a grocery store after illness and vision loss changed the course of her life. We knew the veteran who became a beloved house dad at the shelter before losing his own battle. We knew the people whose stories were far more complex, more beautiful, and more human than the public narrative allowed. So the question became: <em>how do you help a community see what it has trained itself to look past?</em></p>
+            <p>A brochure would not do it. A speech would not do it. Another panel discussion would not do it. <span class="lead">We needed to create an experience</span> — not an event for the sake of an event, and not a campaign that made people feel guilty for a few minutes and then move on. We needed something immersive enough to interrupt assumptions, human enough to build empathy, and practical enough to move people toward action. We built it around four pillars: education, advocacy, workforce, and community identity.</p>
+            <p>The exhibit became the first doorway — an immersive public art experience that invited the community to slow down, read, listen, and sit with the humanity of people they had often only encountered from a distance. People stopped. They read. They cried. They talked differently afterward. <span class="lead">Real social change does not begin only in the mind; it begins when the mind, heart, and conscience finally meet in the same place.</span> The exhibit eventually became a permanent part of the Pathways lobby, so it was no longer a one-time campaign — every partner, visitor, volunteer, and funder who walked through encountered the deeper reason the work existed.</p>
+            <p>Then we extended the experience through virtual reality, letting people step into the emotional weight of housing instability — the confusion, the pressure, the impossible choices, the way crisis reorganizes every decision. That is where the flywheel started: storytelling created empathy, empathy created engagement, engagement attracted partners, partners brought resources, and resources expanded the mission. Humanizing Homelessness became a cause-marketing platform and a corporate volunteer pipeline where matching gifts and engagement became more powerful because the emotional context was already built.</p>
+            <p>Then the campaign moved again — from awareness to economic mobility. Through a partnership with the local technical college and a local coffee shop, the workforce pillar became a pathway to real credentials and regional employer opportunities. It was never meant to leave people in the role of "those being helped"; it was meant to restore dignity, identity, and possibility. <span class="lead">That is the Walt Disney social-good principle for me: not fantasy, but emotional architecture.</span> Design the experience so people do not just hear the mission — they enter it, feel it, remember it, and find their role inside it.</p>
+            <p>Humanizing Homelessness was never about making people feel bad. It was about making people feel connected — because once people feel connected, they give differently, they volunteer differently, they fund differently, they partner differently, they lead differently. <span class="lead">That is the kind of social impact experience I want to keep building: the kind that informs the mind, softens the heart, awakens the soul, and then gives people a clear way to act.</span></p>
+            <div class="outcomes">
+              <b>What it produced</b>
+              <ul>
+                <li class="flywheel"><b>The Flywheel</b>The mission creates the experience. The experience builds the community. The community drives the change. The change writes a new story. And the flywheel never stops.</li>
+                <li>Over <b>250</b> community members — from civic, faith, business, nonprofit, hospitality, and education sectors, including many families who used it as a learning experience — toured the exhibit, a first of its kind in our community</li>
+                <li class="quote">"I will never forget one of the people featured in the exhibit was wearing a shirt where our daughter attends school, and still, to this day, our 10-year-old will ask us questions about the person, wondering what that person is doing today. The exhibit impacted our family and provided an action plan to take care of our neighbors."<span class="attr">— Exhibit attendee</span></li>
+                <li class="watch"><a class="watch-link" href="https://www.artsteps.com/view/654356c99ac71c82259f756e" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>Step inside the VR exhibit &amp; hear their stories</a></li>
+                <li class="watch"><a class="watch-link" href="https://www.youtube.com/watch?v=TLmzIKmZvgs" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>Watch the immersive experience come to life</a></li>
+              </ul>
+            </div>
+            <div class="civic-tags">
+              <div class="ct-label">CIVIC elements activated</div>
+              <div class="ct-row">
+                <span class="ct"><b>V</b>Voice &amp; Values</span>
+                <span class="ct"><b>C</b>Collective Responsibility</span>
+                <span class="ct"><b>I</b>Integrated Pathways</span>
+                <span class="ct"><b>C</b>Capacity for Change</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="proj" id="proj3">
+        <div class="proj-top" onclick="toggleProj('proj3')">
+          <div class="proj-num">03</div>
+          <div class="proj-txt">
+            <h3>Opioid Response Infrastructure</h3>
+            <div class="hook">When grief became a system of hope.</div>
+          </div>
+          <span class="proj-toggle">
+            <span class="lbl-closed">Read more</span><span class="lbl-open">Close</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="#0e7c8c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-body-inner">
+            <div class="intro">The opioid crisis did not arrive as a policy issue. It arrived as a phone call — a parent losing a child, a coroner confirming another life gone too soon, an ER stabilizing someone for the night with no guarantee they'd survive the next. A thousand private heartbreaks happening inside one public failure.</div>
+            <p>In York County, one of those heartbreaks belonged to Bob Norwood, who lost his son to an overdose. Instead of letting grief become only silence, he turned it into a coalition roundtable that became YC HOPE — York County Heroin Opioid Prevention Education. By the time I joined as Prevention Director at Keystone Substance Abuse Services, the table was already powerful: law enforcement, hospitals, emergency departments, treatment providers, peer support, the coroner's office, public health, schools, and families. Everyone knew the stakes.</p>
+            <p>But there was a deeper problem — everyone was seeing the crisis from their own doorway. The hospital saw the overdose survivor. The police saw the scene. The coroner saw the fatality. The school saw the child before the crisis fully formed. Each institution had truth, but no one had the whole story in real time. <span class="lead">And in an epidemic, time is the difference between warning and obituary.</span> So the question was never how to get people to care — they already cared. It was: <em>how do we turn caring into coordination?</em></p>
+            <p>I started looking at the architecture underneath the coalition. ODMAP — the Overdose Detection Mapping Application Program — already existed, but the system around it needed strengthening. Some partners entered data consistently; others didn't. So the work became less about launching something new and more about connecting what was already there. I mapped who was using the system, where the gaps were, and what agreements needed to be in place — building formal expectations through MOUs, contracts, and shared procedures. Then we gave the system a nervous system: connecting overdose data into dashboards so we could see hot-spot patterns by geography, demographics, and substance type. <span class="lead">The point was never to admire the data — it was to make it move.</span></p>
+            <p>Then we tied resources to response. Through Keystone's grant structure — blended SAMHSA, State Opioid Response, county, and a Piedmont Medical Center (Tenet Health) partnership — funding flowed directly to the partners closest to the crisis. Hospitals embedded peer support in the fragile window after stabilization. Law enforcement could connect people to recovery instead of only responding through a criminal lens. And we moved upstream: through a Duke Endowment initiative, we supported a school-based behavioral health model across York County districts — because the crisis was never only about drugs. It was about pain, trauma, isolation, and the places where people fall through before anyone calls it addiction.</p>
+            <p>The field evidence — overdose trends, case patterns, data, and frontline stories — gave us something to carry into policy. The stories gave the issue its soul; the data gave it credibility; the coalition gave it legitimacy. Over four years of sustained advocacy and testimony before the SC General Assembly, that work contributed to South Carolina's first fentanyl trafficking legislation and Good Samaritan protections. But the most powerful moment wasn't at the State House — it was back in the room, years later, listening as partner after partner reported their numbers moving down.</p>
+            <p>That is the part of population-level change people often miss. It does not usually feel like one grand victory. It feels like years of showing up when the numbers are still painful, years of building trust before the system is ready, years of convincing people to share data, share responsibility, share credit, and share the burden. And then, one day, the room sounds different. The reports change. The trend lines bend. The partners exhale. <span class="lead">The system you have been building quietly starts to hold.</span> Hope is not just an emotion. Hope is design. Hope is what happens when compassion becomes coordinated enough to save lives.</p>
+            <div class="outcomes">
+              <b>What it produced</b>
+              <ul>
+                <li>Real-time ODMAP surveillance with automated tiered alerts to first responders, hospitals, and behavioral health partners</li>
+                <li>Blended financing (SAMHSA, State Opioid Response, county, Tenet/Piedmont) directing resources to frontline partners; a <b>$5.5M</b> portfolio under management</li>
+                <li>4 years of advocacy contributing to SC's <b>first fentanyl trafficking legislation</b> and <b>Good Samaritan Law</b> — and, years later, partner trend lines declining</li>
+                <li class="watch"><a class="watch-link" href="https://www.youtube.com/watch?v=CdZEaHqMGq4" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>Watch why prevention saves lives</a></li>
+              </ul>
+            </div>
+            <div class="civic-tags">
+              <div class="ct-label">CIVIC elements activated</div>
+              <div class="ct-row">
+                <span class="ct"><b>C</b>Collective Responsibility</span>
+                <span class="ct"><b>I</b>Infrastructure for Impact</span>
+                <span class="ct"><b>I</b>Integrated Pathways</span>
+                <span class="ct"><b>V</b>Voice &amp; Values</span>
+                <span class="ct"><b>C</b>Capacity for Change</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <section class="overview">
   <div class="ov-title">A snapshot of what these moments encompass</div>
@@ -402,6 +805,25 @@ document.querySelectorAll('.card').forEach(card=>{
   card.addEventListener('dragleave',()=>card.classList.remove('drag-over'));
   card.addEventListener('drop',e=>{e.preventDefault();card.classList.remove('drag-over');});
 });
+
+// ── Project accordion ──
+function toggleProj(id){
+  const proj=document.getElementById(id);
+  const body=proj.querySelector('.proj-body');
+  const isOpen=proj.classList.contains('open');
+  if(isOpen){
+    body.style.maxHeight=body.scrollHeight+'px';
+    requestAnimationFrame(()=>{body.style.maxHeight='0px';});
+    proj.classList.remove('open');
+  }else{
+    proj.classList.add('open');
+    body.style.maxHeight=body.scrollHeight+'px';
+    body.addEventListener('transitionend',function te(){
+      if(proj.classList.contains('open')) body.style.maxHeight='none';
+      body.removeEventListener('transitionend',te);
+    });
+  }
+}
 </script>
 </body>
 </html>
